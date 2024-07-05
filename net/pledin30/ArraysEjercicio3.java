@@ -3,11 +3,13 @@ package net.pledin30;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Random;
+import net.util.HiUtilery;
 
 
 public class ArraysEjercicio3 {
     private int numbers[] = {52,3,2,1,9,99,2,3,5,99,25,24,38,59,98,12,34,46,58,69,75,43,24,56,15,90,55,49,69,77,88,11};
-
+    private HiUtilery util = new HiUtilery();
+ 
     private class Student {
         public int id;
         public String name;
@@ -229,6 +231,152 @@ public class ArraysEjercicio3 {
         }
     }
 
+    /*
+     * Ejercicio 11Permalink
+     * Diseñar el algoritmo correspondiente a un programa, que:
+     *  Crea una tabla bidimensional de longitud 5x5 y nombre ‘diagonal’.
+     *  Carga la tabla de forma que los componentes pertenecientes a la diagonal de la matriz tomen el valor 1 y el resto el valor 0.
+     *  Muestra el contenido de la tabla en pantalla.
+     */
+    public void showDiagonalMatrix() {
+        int[][] diagonal = new int[5][5];
+        for(int i=0; i<5; i++) {
+            for(int j=0;j<5;j++){ 
+                diagonal[i][j]=(i==j?1:0);
+            }
+        }
+        System.out.println("printing Matrix:");
+        util.printBidMatrix(diagonal);        
+    }
+
+    /*
+     * Ejercicio 12:
+     *   Crea una tabla bidimensional de longitud 5x15 y nombre ‘marco’.
+     *   Carga la tabla con dos únicos valores 0 y 1, donde el valor uno ocupará las posiciones o elementos que delimitan la tabla, es decir, las más externas, mientras que el resto de los elementos contendrán el valor 0.
+     *   111111111111111
+     *   100000000000001
+     *   100000000000001
+     *   100000000000001
+     *   111111111111111
+     *   Visualiza el contenido de la matriz en pantalla. 
+    */
+    private void showFrame() {
+        int[][] frame = new int[5][5];
+        for(int i=0; i<5; i++) {
+            for(int j=0;j<5;j++){ 
+                if(i==0||i==4){ 
+                    frame[i][j]=1; 
+                }
+                else if(j==0||j==4){
+                    frame[i][j]=1; 
+                }else 
+                    frame[i][j]=0;
+            }
+        }        
+        System.out.println("printing Matrix and Frame:");
+        this.util.printBidMatrix(frame);        
+   }
+
+   /*
+    * Ejercicio 13:
+    * De una empresa de transporte se quiere guardar el nombre de los conductores que tiene, 
+    * y los kilómetros que conducen cada día de la semana.
+    * Para guardar esta información se van a utilizar dos arreglos:
+    * Nombre: Vector para guardar los nombres de los conductores.
+    * kms: Tabla para guardar los kilómetros que realizan cada día de la semana.
+    * Se quiere generar un nuevo vector (“total_kms”) con los kilómetros totales que realza cada conductor.
+    * Al finalizar se muestra la lista con los nombres de conductores y los kilómetros que ha realizado.
+    */
+    public void showTransportVector() {
+        String[] names = { "Fredy","Horacio","Pedro","Ramiro","Juan"};
+        int[][] table = {   {100, 520, 610, 451, 1001, 910, 710}, 
+                            {200, 503, 606, 452, 1020, 901, 701}, 
+                            {300, 506, 606, 453, 1300, 902, 710}, 
+                            {400, 560, 670, 454, 1003, 920, 705}, 
+                            {500, 600, 607, 455, 1030, 903, 750},                             
+                        };
+        int[] total_kms = new int[5];
+        for(int i=0; i<5; i++) {
+            int sum = 0;
+            for(int j=0; j<7; j++) {
+                sum+=table[i][j];
+            }
+            total_kms[i]=sum;
+        }
+        System.out.println("Printing Driver list");
+        for(int i=0; i<5; i++) {
+            System.out.printf("Driver %s, total_kms=%d\n",names[i],total_kms[i]);
+        }
+    }
+
+    /*
+     * Crear un programa que lea los precios de 5 artículos y las cantidades vendidas por una empresa en sus 4 sucursales. Informar:
+     * - Las cantidades totales de cada articulo.
+     * - La cantidad de artículos en la sucursal 2.
+     * - La cantidad del articulo 3 en la sucursal 1.
+     * - La recaudación total de cada sucursal.
+     * - La recaudación total de la empresa.
+     * - La sucursal de mayor recaudación.
+     */
+    public void showStoresAndArticles() {
+        String[] articles = {"Vodka Red Beard", "Bacardi", "Ron Cuba", "Wisky Scotlan", "Beer Corona"};
+        double[] prices = new double[5];
+        double[] sum = new double[4];
+        double grantotal=0;
+        double max=0;
+        int sells[][] = new int[5][4];
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Enter prices for earch article");
+        for(int i=0; i<5; i++) {
+            System.out.printf("Article %s: ", articles[i]);
+            System.out.print("Enter price: ");
+            prices[i] = Double.parseDouble(scan.nextLine());
+            System.out.println("Type sells to 4 stores:");
+            System.out.print("Store 1: ");
+            sells[i][0]=Integer.parseInt(scan.nextLine());
+            System.out.print("Store 2: ");
+            sells[i][1]=Integer.parseInt(scan.nextLine());
+            System.out.print("Store 3: ");
+            sells[i][2]=Integer.parseInt(scan.nextLine());
+            System.out.print("Store 4: ");
+            sells[i][3]=Integer.parseInt(scan.nextLine());
+        }
+        System.out.println("Printing total sells by article");
+        for(int i=0; i<5; i++) {
+            System.out.printf(" %s, total=%d \n ", articles[i], sells[i][0]+sells[i][1]+sells[i][2]+sells[i][3]);
+        } 
+
+        System.out.println("La cantidad de artículos en la sucursal 2.");
+        for(int i=0; i<5; i++) {
+            System.out.printf(" %s, quantity=%d \n ", articles[i], sells[i][1]);
+        }
+
+        System.out.println("La cantidad del articulo 3 en la sucursal 1: "+ sells[2][0]);
+
+        System.out.println("La recaudación total de cada sucursal.");
+        for(int store=0; store<4; store++) {
+            sum[store] = 0d;
+            for(int article=0; article<5; article++) {
+                sum[store]+=sells[article][store]*prices[article];
+            }
+            System.out.printf("Store %d = %f\n",(store+1),sum[store]);
+            grantotal = grantotal + sum[store];
+            max = Math.max(max,sum[store]);
+        }
+
+        System.out.printf("La recaudación total de la empresa. %f",grantotal);
+
+        System.out.println("La sucursal de mayor recaudación.");
+        for(int store=0; store<4; store++) {
+            if(max == sum[store]) {
+                System.out.printf("%d,",store);
+            }
+        }
+        scan.close();
+        
+    }
+
     
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -244,9 +392,13 @@ public class ArraysEjercicio3 {
         System.out.println("8. Enter students names & rates");
         System.out.println("9. Enter temperature to show cold weather");
         System.out.println("10. Matrix");
+        System.out.println("11. Show Diagonal Matrix");
+        System.out.println("12. Matrix and Frame");
+        System.out.println("13. Trasport Vectors");
+        System.out.println("14. Store and Articles");
         System.out.println("99. Exit");
         System.out.println("Select one option...");
-        int opt = scan.nextInt();
+        int opt = Integer.parseInt(scan.nextLine());
         switch (opt) {
             case 1: 
                 app.show5notes();
@@ -278,11 +430,23 @@ public class ArraysEjercicio3 {
             case 10:
                 app.showMatrix();
                 break;
+            case 11:
+                app.showDiagonalMatrix();
+                break;
+            case 12:
+                app.showFrame();
+                break;
+            case 13:
+                app.showTransportVector();
+                break;
+            case 14:
+                app.showStoresAndArticles();
             case 99: 
                 break;
             default:
                 System.out.println("Option not recognized");
         }
         System.out.println();
+        scan.close();        
     }
 }
