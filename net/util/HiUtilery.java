@@ -1,7 +1,7 @@
 package net.util;
 
 public class HiUtilery {
-    
+
     public String toString() {
         return "MyUtilery";
     }
@@ -14,4 +14,10 @@ public class HiUtilery {
             System.out.println();
         }
     }    
+    public void printObjectArray(Object[] arr, int counter) {
+        for(int i=0; i<counter; i++) {
+            System.out.printf("%s\n", arr[i].toString());
+        }
+
+    }
 }

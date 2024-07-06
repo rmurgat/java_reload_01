@@ -21,6 +21,15 @@ public class ArraysEjercicio3 {
         public double maxtemp;
         public double media;
     }
+    public class Match {
+        public int team1;
+        public int team2;
+        char result;
+
+        public String toString() {
+            return "team1:"+this.team1+",team2:"+this.team2+",result:"+this.result;
+        }
+    }
 
     public void show5notes() {
         Scanner scan = new Scanner(System.in);
@@ -374,7 +383,39 @@ public class ArraysEjercicio3 {
             }
         }
         scan.close();
-        
+    }
+
+    /*
+     * Crear un programa de ordenador para gestionar los resultados de la quiniela de fútbol. Para ello vamos a utilizar dos tablas:
+     * Equipos: Que es una tabla de cadenas donde guardamos en cada columna el nombre de los equipos de cada partido. En la quiniela se indican 15 partidos.
+     * Resultados: Es una tabla de enteros donde se indica el resultado. También tiene dos columnas, en la primera se guarda el número de goles del equipo que está guardado en la primera columna de la tabla anterior, y en la segunda los goles del otro equipo.
+     * El programa ira pidiendo los nombres de los equipos de cada partido y el resultado del partido, a continuación se imprimirá la quiniela de esa jornada.
+     */
+    public void showSoccerPool() {
+        String[] teams = {"1-Cruz Azul", "2-America", "3-Pumas", "4-Atlante"};
+        Match[] table = new Match[20];
+        int imatches = 0;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Teams:\n");
+        Arrays.stream(teams).forEach(t->{
+            System.out.println(t); });
+        System.out.println("Enter Matches counter: ");
+        imatches = Integer.parseInt(scan.nextLine());
+        System.out.println("Entering match info");
+        for(int i=0;i<imatches; i++) {
+            table[i] = new Match();
+            System.out.printf("[MATCH NO %d]\n",(i+1));
+            System.out.print("Choose team 1: ");
+            table[i].team1 = Integer.parseInt(scan.nextLine());
+            System.out.print("Choose team 2: ");
+            table[i].team2 = Integer.parseInt(scan.nextLine());
+            System.out.print("Type result: ");
+            table[i].result = scan.nextLine().charAt(0);
+        }
+        System.out.println("Printing Table");
+        util.printObjectArray(table, imatches);
+        scan.close();
     }
 
     
@@ -396,6 +437,7 @@ public class ArraysEjercicio3 {
         System.out.println("12. Matrix and Frame");
         System.out.println("13. Trasport Vectors");
         System.out.println("14. Store and Articles");
+        System.out.println("15. Soccer Pool");
         System.out.println("99. Exit");
         System.out.println("Select one option...");
         int opt = Integer.parseInt(scan.nextLine());
@@ -441,6 +483,8 @@ public class ArraysEjercicio3 {
                 break;
             case 14:
                 app.showStoresAndArticles();
+            case 15:
+                app.showSoccerPool();
             case 99: 
                 break;
             default:
