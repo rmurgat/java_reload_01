@@ -2,6 +2,11 @@ package net.pledin30;
 
 import java.util.Scanner;
 
+/*
+ * SORT algo
+ * video: https://youtu.be/UrPJLhKF1jY?si=nMYo6ktydnGUFgZo
+ */
+
 public class SortEjercicio1 {
 
     static public void  main(String[] args) {
