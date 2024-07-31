@@ -1,4 +1,5 @@
 package net.util;
+import java.util.Random;
 
 public class HiUtilery {
 
@@ -20,4 +21,10 @@ public class HiUtilery {
         }
 
     }
+
+    public int generateRandom(int ini, int end) {
+        Random rand = new Random();
+        return rand.nextInt(ini,end+1);
+    }
+
 }

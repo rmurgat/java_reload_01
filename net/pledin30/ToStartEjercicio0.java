@@ -2,7 +2,11 @@ package net.pledin30;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
+
+import net.util.HiUtilery;
+
 import java.lang.Math;
+
 
 /**
  * Practices
@@ -83,6 +87,101 @@ public class ToStartEjercicio0 {
         }
     }
 
+    public void playLoops() {
+        int iwhilecnt=0;
+        int idowhilecnt=0;
+        System.out.println("- Traversing using For: ");
+        for(int iforcnt=0; iforcnt<10; iforcnt++) {
+            System.out.print(iforcnt+", ");
+        }
+        System.out.println("\n- Traversing using While: ");
+        while(iwhilecnt<10) {
+            System.out.print(iwhilecnt++ + ", ");
+        }
+        System.out.println("\nTraversing using Do-While: ");
+        do{
+            System.out.print(idowhilecnt++ + ", ");
+        }while(idowhilecnt<10);
+
+        System.out.println("\n- Asking for number till -1: ");
+        Scanner sn= new Scanner(System.in);
+        sn.useDelimiter("\n");
+        sn.useLocale(Locale.US);
+        int number = 0;
+        int suma=0;
+        while(number!=-1) {
+            suma +=number;
+            System.out.println("type a number (-1 to end): ");
+            number = sn.nextInt();
+        }
+        System.out.printf("Suma = %d", suma);
+        System.out.println("\n- Show numbers between 0-100 dividable 2 and 3");
+        for(int iforcnt=1;iforcnt<=100;iforcnt++){
+            if(iforcnt%2==0 && iforcnt%3==0) {
+                System.out.print(iforcnt+", ");
+            }
+        }
+    }
+
+    public void playStrings() {
+        int ilowerCounter=0, iupperCounter=0;
+        char oneChar;
+        Scanner sn = new Scanner(System.in);
+        sn.useDelimiter("\n");
+        System.out.println("Enter a string and count upper and lower case");
+        String str = sn.next();
+        for(int i=0; i<str.length(); i++) {
+            oneChar = str.charAt(i);
+            if(Character.isLowerCase(oneChar)) ilowerCounter++;
+            if(Character.isUpperCase(oneChar)) iupperCounter++;
+        }
+        System.out.printf("TOTAL upper(%d) lower(%d)", iupperCounter, ilowerCounter);
+
+        System.out.println("Remove space char in string");
+        String newString="";
+        for(int i=0; i<str.length(); i++) {
+            oneChar = str.charAt(i);
+            if(oneChar!=' ') newString+=oneChar;
+        }
+        System.out.println("String without spaces: "+newString);
+        sn.close();
+    }
+    public void generatingPassword() {
+        HiUtilery util = new HiUtilery();
+        Scanner sn = new Scanner(System.in);
+        System.out.println("Type total chars in password: ");
+        int ilong = sn.nextInt();
+        StringBuilder password= new StringBuilder();
+        String specialChar=" #$%&";
+        password.append((char)util.generateRandom('A','Z'));
+        for(int i=1; i<ilong; i++) {
+            int itypeChar = util.generateRandom(1, 4);
+            switch(itypeChar) {
+                case 1 -> password.append((char)util.generateRandom('A','Z'));
+                case 2 -> password.append((char)util.generateRandom('a', 'z'));
+                case 3 -> password.append(util.generateRandom(0,9));
+                case 4 -> password.append(specialChar.charAt(util.generateRandom(1,4)));
+            }
+        }
+        System.out.println("Password generated: [" + password + "],long="+password.length());
+    }
+
+    public void playFibonacci() {
+
+        int num1=0;
+        int num2=1;
+        int sum=1;
+        Scanner sn = new Scanner(System.in);
+        System.out.println("Type the fibonacci position:");
+        int position = sn.nextInt();
+        for(int i=1; i<position; i++) {
+            sum= num1+num2;
+            num1 = num2;
+            num2 = sum;
+        }
+        System.out.println("Fibonacci:"+sum);
+    }
+    
     public static void main(String[] args) {
         ToStartEjercicio0 app = new ToStartEjercicio0();
         Scanner sc = new Scanner(System.in);
@@ -94,6 +193,11 @@ public class ToStartEjercicio0 {
         System.out.println("4. playing aleatory numbers");
         System.out.println("5. playing Math class");
         System.out.println("6. playing New Switch Way");
+        System.out.println("7. Playing Loops");
+        System.out.println("8. playing with String");
+        System.out.println("9. Generating password");
+        System.out.println("10. Fibonacci");
+
         int opt = Integer.parseInt(sc.nextLine());
         switch (opt) {
             case 1 -> app.sayhello();
@@ -102,9 +206,13 @@ public class ToStartEjercicio0 {
             case 4 -> app.playrandomNumbers();
             case 5 -> app.playMathClass();
             case 6 -> app.playNewWaySwitch();
+            case 7 -> app.playLoops();
+            case 8 -> app.playStrings();
+            case 9 -> app.generatingPassword();
+            case 10 -> app.playFibonacci();
             default -> System.out.println("**Option not included**");
-        }  
-        sc.close();              
+        }
+        sc.close();
     }
 
 }
