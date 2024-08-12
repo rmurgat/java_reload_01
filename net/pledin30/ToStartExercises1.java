@@ -12,7 +12,7 @@ import java.lang.Math;
  * Practices
  * Youtube Channel: https://youtu.be/edKdQcbFzHI?si=nKUii3k-2hvcW8KM
  */
-public class ToStartEjercicio0 {
+public class ToStartExercises1 {
 
     public void sayhello() {
         Scanner sn = new Scanner(System.in);
@@ -183,7 +183,7 @@ public class ToStartEjercicio0 {
     }
     
     public static void main(String[] args) {
-        ToStartEjercicio0 app = new ToStartEjercicio0();
+        ToStartExercises1 app = new ToStartExercises1();
         Scanner sc = new Scanner(System.in);
         sc.useDelimiter("\n");
         System.out.println("\n** Menu **");

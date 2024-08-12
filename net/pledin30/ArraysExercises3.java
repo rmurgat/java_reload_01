@@ -6,7 +6,7 @@ import java.util.Random;
 import net.util.HiUtilery;
 
 
-public class ArraysEjercicio3 {
+public class ArraysExercises3 {
     private int numbers[] = {52,3,2,1,9,99,2,3,5,99,25,24,38,59,98,12,34,46,58,69,75,43,24,56,15,90,55,49,69,77,88,11};
     private HiUtilery util = new HiUtilery();
  
@@ -418,10 +418,57 @@ public class ArraysEjercicio3 {
         scan.close();
     }
 
+    /*
+     * Left Rotating an Array
+     */
+    public void leftRotatingArray() {
+        int times = 2;
+        int[] values = {1,2,3,4,5,6,7};
+        for(int i=0; i<times; i++) {
+            leftRotate1value(values);
+        }
+        System.out.println("resulting one array as: " + Arrays.toString(values));
+        System.out.println("Array Sorted Rotated N=" + returnCountArraySortedRotated(values));
+    }
+
+    public void leftRotate1value(int [] arr) {
+        int temp = arr[0];
+        for(int i=0; i<arr.length-1; i++) {
+            arr[i] = arr[i+1];
+        }
+        arr[arr.length-1]=temp;
+    }
+
+    public int returnCountArraySortedRotated(int [] arr) {
+        int first = arr[0];
+        for(int i=0; i<arr.length; i++) {
+            if(arr[i]<first) return arr.length-i;
+        }
+        return 0;
+    }
+
+    /*
+     * Rotation count of Sorted array
+
+    Consider an array of distinct numbers sorted in increasing order. The array has been rotated (anti-clockwise) k number of times. Given such an array, find the value of k.
+
+    Input : arr[] = {15, 18, 2, 3, 6, 12}
+    Output: 2
+    Explanation : Initial array must be {2, 3,
+    6, 12, 15. 18}. We get the given array after 
+    rotating the initial array twice.
+     
+    Input : arr[] = {7, 9, 11, 12, 5}
+    Output: 4
+     
+    Input: arr[] = {7, 9, 11, 12, 15};
+    Output: 0
+     */
+
     
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        ArraysEjercicio3 app = new ArraysEjercicio3();
+        ArraysExercises3 app = new ArraysExercises3();
         System.out.println("\n** Menu **");
         System.out.println("1. Calculus 5 Notes");
         System.out.println("2. Max Number in array");
@@ -438,6 +485,7 @@ public class ArraysEjercicio3 {
         System.out.println("13. Trasport Vectors");
         System.out.println("14. Store and Articles");
         System.out.println("15. Soccer Pool");
+        System.out.println("16. Rotating array");
         System.out.println("99. Exit");
         System.out.println("Select one option...");
         int opt = Integer.parseInt(scan.nextLine());
@@ -485,6 +533,8 @@ public class ArraysEjercicio3 {
                 app.showStoresAndArticles();
             case 15:
                 app.showSoccerPool();
+            case 16:
+                app.leftRotatingArray();
             case 99: 
                 break;
             default:

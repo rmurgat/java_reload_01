@@ -9,7 +9,7 @@ import net.util.HiUtilery;
  * Practices
  * Youtube Channel: https://youtu.be/edKdQcbFzHI?si=nKUii3k-2hvcW8KM
  */
-public class ToStartEjercicio1 {
+public class ToStartExercises2 {
     HiUtilery util = new HiUtilery();
 
     public void playFirstTimeArrays() {
@@ -100,7 +100,7 @@ public class ToStartEjercicio1 {
 
     public static void main(String[] args) {
         int ioption = 0;
-        ToStartEjercicio1 app = new ToStartEjercicio1();
+        ToStartExercises2 app = new ToStartExercises2();
         Scanner sn = new Scanner(System.in);
         System.out.println("----[ MAIN MENU ]---");
         System.out.println("1. Starting arrays");

@@ -7,7 +7,7 @@ import java.util.Scanner;
  * video: https://youtu.be/UrPJLhKF1jY?si=nMYo6ktydnGUFgZo
  */
 
-public class SortEjercicio1 {
+public class SortExercises1 {
 
     static public void  main(String[] args) {
         Scanner sn = new Scanner(System.in);

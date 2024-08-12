@@ -9,7 +9,7 @@ import net.util.HiUtilery;
  * channel: https://www.youtube.com/@ProgramaTutos/videos
  * video: https://www.youtube.com/watch?v=7Uf6ceQGj2I
  */
-public class SearchEjercicio4 {
+public class SearchExercises1 {
     private HiUtilery outil = new HiUtilery();
 
     public void searchingSequential() {
@@ -67,7 +67,7 @@ public class SearchEjercicio4 {
 
     public static void main(String[] args) {
         int option=0;
-        SearchEjercicio4 app = new SearchEjercicio4();
+        SearchExercises1 app = new SearchExercises1();
         Scanner sn = new Scanner(System.in);
         System.out.println("--[MAIN MENU]--");
         System.out.println("1. Secuential search");
