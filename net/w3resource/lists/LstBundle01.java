@@ -2,19 +2,17 @@ package net.w3resource.lists;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import net.util.HiUtilery;
 
-/*
+/**
+ * ARRAYLIST EXERCISES
  * wikipage id: wiki_autostudy_java_arraylist 
  */
 public class LstBundle01 {
